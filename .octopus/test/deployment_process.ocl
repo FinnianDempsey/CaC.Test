@@ -4,7 +4,11 @@ step "run-a-script" {
     action {
         action_type = "Octopus.Script"
         properties = {
-            Octopus.Action.Script.ScriptBody = "write-host 'test'"
+            Octopus.Action.Script.ScriptBody = <<-EOT
+                write-host 'test'
+                
+                
+            EOT
             Octopus.Action.Script.ScriptSource = "Inline"
             Octopus.Action.Script.Syntax = "PowerShell"
         }
