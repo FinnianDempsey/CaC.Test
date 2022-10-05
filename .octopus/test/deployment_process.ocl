@@ -12,5 +12,16 @@ step "run-a-script" {
             Octopus.Action.Script.Syntax = "PowerShell"
         }
         worker_pool = "local-windows"
+
+        packages "package" {
+            acquisition_location = "Server"
+            feed = "octopus-server-built-in"
+            package_id = "#{package}"
+            properties = {
+                Extract = "True"
+                Purpose = ""
+                SelectionMode = "immediate"
+            }
+        }
     }
 }
